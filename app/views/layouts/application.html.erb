@@ -10,6 +10,68 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <div class="container">
+         <a class="navbar-brand" href="/",class: 'd-inline-block'>naganocake</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+
+         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+       <ul class="navbar-nav ml-auto">
+
+        <% if member_signed_in? %>
+
+         <li>
+            <%= link_to public_mypage_path(current_member) do %>
+              <i class="fas fa-home nav-link text-light"> マイページ</i>
+            <% end %>
+         </li>
+         <li>
+           <%= link_to public_items_path do %>
+              <i class="fas fa-users nav-link text-light"> 商品一覧</i>
+           <% end %>
+         </li>
+         <li>
+           <%= link_to public_cart_items_path do %>
+              <i class="fas fa-book-open nav-link text-light"> カート</i>
+           <% end %>
+         </li>
+         <li>
+           <%= link_to destroy_member_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt nav-link text-light"> ログアウト</i>
+           <% end %>
+         </li>
+        <% else %>
+                 <li>
+           <%= link_to root_path do %>
+              <i class="fas fa-home nav-link text-light"> Home</i>
+           <% end %>
+         </li>
+         <li>
+           <%= link_to homes_about_path do %>
+              <i class="fas fa-link nav-link text-light"> About</i>
+           <% end %>
+         </li>
+         <li>
+           <%= link_to public_items_path do %>
+              <i class="fas fa-user-plus nav-link text-light"> 商品一覧</i>
+           <% end %>
+         </li>
+         <li>
+           <%= link_to new_member_session_path do %>
+              <i class="fas fa-sign-in-alt nav-link text-light"> ログイン</i>
+           <% end %>
+         </li>
+
+        </ul>
+        <% end %>
+
+       </div>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
