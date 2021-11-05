@@ -58,7 +58,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   end
 
   namespace :public do
-    get 'members/mypage' => 'members#show', as: 'mypage'
+    get 'members/show' => 'members#show', as: 'mypage'
     get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
     patch 'members/withdrawal' => 'members#withdrawal', as: 'withdrawal'
     resources :members, only: [:edit, :update]

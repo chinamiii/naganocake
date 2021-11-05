@@ -1,0 +1,37 @@
+<h1>マイページ</h1>
+<h3>登録情報</h3>
+<%= link_to "編集する", edit_public_member_path(@member), class:"btn btn-secondary" %>
+<table class="table">
+  <tbody>
+   <tr>
+     <th>氏名</th>
+     <th><%= @member.last_name %><%= @member.first_name %></th>
+   </tr>
+   <tr>
+     <th>カナ</th>
+     <th><%= @member.last_name_kana %><%= @member.first_name_kana %></th>
+   </tr>
+   <tr>
+     <th>郵便番号</th>
+     <th><%= @member.postal_code %></th>
+   </tr>
+   <tr>
+     <th>住所</th>
+     <th><%= @member.address %></th>
+   </tr>
+   <tr>
+     <th>電話番号</th>
+     <th><%= @member.telephone_number %></th>
+   </tr>
+   <tr>
+     <th>メールアドレス</th>
+     <th><%= @member.email %></th>
+   </tr>
+  </tbody>
+</table>
+
+<h3>配送先</h3>
+<%= link_to "一覧を見る", public_deliveries_path, class:"btn btn-secondary" %>
+
+<h3>注文一覧</h3>
+<%= link_to "一覧を見る", public_orders_path, class:"btn btn-secondary" %>
