@@ -8,11 +8,9 @@ class Public::MembersController < ApplicationController
     @memmber = current_member
   end
 
-
-
   def update
     @member = current_member
-    @member.updata(member_params)
+    @member.update(member_params)
     redirect_to public_mypage_path(@member)
   end
 
@@ -20,12 +18,18 @@ class Public::MembersController < ApplicationController
   end
 
   def withdrawal
+    @member = current_member
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @member.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 
   private
 
   	def member_params
-  		params.require(:member).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :address, :postal_code, :phone_number, :email, :is_deleted)
+  		params.permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :address, :postal_code, :phone_number, :email, :is_deleted)
   	end
 
 end
