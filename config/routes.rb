@@ -13,8 +13,9 @@ devise_for :members,skip: [:passwords,], controllers: {
 
 # 管理者用
 # URL /admin/sign_in ...
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
+devise_for :admins, skip: [:passwords] ,controllers: {
+  sessions: "admin/sessions",
+  registrations: 'admin/registrations'
 }
 
   namespace :admin do
